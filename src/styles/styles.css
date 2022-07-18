@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    position: relative;
+    font-family: sans-serif; 
+    box-sizing: border-box;
+}
+
+main {
+    position: absolute;
+    margin-left: 250px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: calc(100% - 270px - 20px);
+    height: 100vh;
+    background-color: #fafafa;
+}
+
+.form-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    background-color: white;
+    padding: 15px;
+    padding-top: 0;
+}
+
+.form-element {
+    width: calc(33.33% - 50px);
+    padding-right: 50px;
+}
+
+.form-element p {
+    margin: 0;
+    padding-top: 15px;
+    padding-left: 0;
+    padding-bottom: 5px;
+    width: 100%;
+    color: #b0b0b0;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.form-element input{
+    width: 100%;
+}
+
+.form-element select{
+    width: 100%;
+}
+
+.card {
+    
+}

@@ -1,6 +1,7 @@
 import Button from "./components/Button";
 import InputField from "./components/InputField";
 import InputSelect from "./components/InputSelect";
+import "./styles/styles.css"
 
 const CreateEmployee = () => {
     const onClick = () => {
@@ -30,22 +31,24 @@ const CreateEmployee = () => {
         {
             label: "Status", name: "status",
             options: [
-                { key: "married", value: "Married" },
-                { key: "single", value: "Single" }
+                { key: "active", value: "Active" },
+                { key: "inactive", value: "Inactive" }
             ]
         }
     ]
     return (
         <>
-            <div>
-                Create Employee
-            </div>
-            <form action="" id="create-emp">
-                {inputFields.map(element => <InputField label={element.label} type={element.type} />)}
-                {inputSelects.map(element => <InputSelect label={element.label} name={element.name} options={element.options}/>)}
-                <Button label='Create' handleClick={() => {}} className='btn1'/>
-                <Button label='Cancel' handleClick={() => {}} className='btn2'/>
-            </form>
+            <main>
+                <div>
+                    Create Employee
+                </div>
+                <form action="" id="create-emp" className="form-flex">
+                    {inputFields.map(element => <InputField label={element.label} type={element.type} className="form-element"/>)}
+                    {inputSelects.map(element => <InputSelect label={element.label} name={element.name} className="form-element" options={element.options}/>)}
+                    <Button label='Create' handleClick={() => {}} className='btn1'/>
+                    <Button label='Cancel' handleClick={() => {}} className='btn2'/>
+                </form>
+            </main>
         </>
     );
 }
