@@ -64,3 +64,13 @@ main {
     flex-basis: 25%;
     flex-grow: 0;
 }
+
+.emp-details {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.emp-details-field {
+    flex-basis: 16.66%;
+    flex-grow: 0;
+}

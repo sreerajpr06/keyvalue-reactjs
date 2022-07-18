@@ -6,6 +6,7 @@ import CreateEmployee from "./CreateEmployee";
 
 const EmployeeList = () => {
     const [page, setPage] = useState("List");
+    const [ empSelected, setEmpSelected ] = useState("");
 
     const employees = [
         {
@@ -14,7 +15,9 @@ const EmployeeList = () => {
             "Joining Date": "12.04.2021",
             "Role": "Full Stack",
             "Status": "Probation",
-            "Experience": "5 years"
+            "Experience": "5 years",
+            "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
+            "Employee ID Proof": "true"
         },
         {
             "Employee Name": "Susan Kurian",
@@ -22,7 +25,9 @@ const EmployeeList = () => {
             "Joining Date": "12.04.2021",
             "Role": "UI Engineer",
             "Status": "Probation",
-            "Experience": "7 years"
+            "Experience": "7 years",
+            "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
+            "Employee ID Proof": "true"
         },
         {
             "Employee Name": "Yugesh",
@@ -30,7 +35,9 @@ const EmployeeList = () => {
             "Joining Date": "12.04.2021",
             "Role": "Devops",
             "Status": "Active",
-            "Experience": "6 years"
+            "Experience": "6 years",
+            "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
+            "Employee ID Proof": "true"
         },
         {
             "Employee Name": "Midhun",
@@ -38,12 +45,16 @@ const EmployeeList = () => {
             "Joining Date": "12.04.2021",
             "Role": "Full Stack",
             "Status": "Active",
-            "Experience": "5 years"
+            "Experience": "5 years",
+            "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
+            "Employee ID Proof": "true"
         }
     ]
 
     const onCardClick = (empId) => {
-        setPage("EmployeeDetails")
+        let emp = employees.find(emp => emp["Employee ID"] === empId)
+        setEmpSelected(emp);
+        setPage("EmployeeDetails");
     }
 
     const onCreateEmpClick = () => {
@@ -79,7 +90,7 @@ const EmployeeList = () => {
                                 }
                             }
                             className="card-header"
-                            onClick={onCardClick}
+                            onClick={() => {}}
                         />
                         {
                             employees.map(emp => {
@@ -97,6 +108,7 @@ const EmployeeList = () => {
                                             }
                                         }
                                         className="card"
+                                        onClick={onCardClick}
                                     />
                                 )
                             })
@@ -109,14 +121,14 @@ const EmployeeList = () => {
                     <main>
                         <EmployeeDetails 
                             details={{
-                                "Employee Name": "Vishal M",
-                                "Employee ID": "E34656767",
-                                "Joining Date": "12.04.2021",
-                                "Role": "Full Stack",
-                                "Status": "Probation",
-                                "Experience": "5 years",
-                                "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
-                                "Employee ID Proof": true
+                                "Employee Name": empSelected["Employee Name"],
+                                "Employee ID": empSelected["Employee ID"],
+                                "Joining Date": empSelected["Joining Date"],
+                                "Role": empSelected["Role"],
+                                "Status": empSelected["Status"],
+                                "Experience": empSelected["Experience"],
+                                "Address": empSelected["Address"],
+                                "Employee ID Proof": empSelected["Employee ID Proof"]
                             }}
                         />
                     </main>
@@ -126,18 +138,6 @@ const EmployeeList = () => {
                     </>
                 )
             }
-            {/* <EmployeeDetails 
-                details={{
-                    "Employee Name": "Vishal M",
-                    "Employee ID": "E34656767",
-                    "Joining Date": "12.04.2021",
-                    "Role": "Full Stack",
-                    "Status": "Probation",
-                    "Experience": "5 years",
-                    "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
-                    "Employee ID Proof": true
-                }}
-            /> */}
         </>
     )
 }
