@@ -3,11 +3,12 @@ const Card = (props) => {
 
     return (
         <>
-            <div className={className} id={fields["Employee ID"]} onClick={event => onClick(event.target.parentNode.getAttribute("id"))}>
+            {/* {console.log(fields["Employee ID"])} */}
+            <div empid={fields["Employee ID"]} className={className}>
                 {
-                    Object.keys(fields).map(field => {
+                    Object.keys(fields).map((field, i) => {
                         return (
-                            <div className="field">
+                            <div key={i} className="field" onClick={event => onClick(event.target.parentNode.getAttribute("empid"))}>
                                 {fields[field]}
                             </div>
                         )

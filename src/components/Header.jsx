@@ -1,11 +1,11 @@
 import Button from "./Button";
 
 const Header = (props) => {
-    const { title, options } = props;
+    const { title, options, className } = props;
 
     return (
         <>
-            <div>
+            <div className={className}>
                 <p>{title}</p>
                 {(options.filter) ? 
                     (

@@ -15,6 +15,10 @@ main {
     background-color: #fafafa;
 }
 
+.header {
+    display: flex;
+}
+
 .form-flex {
     display: flex;
     flex-wrap: wrap;
@@ -49,5 +53,14 @@ main {
 }
 
 .card {
-    
+    display: flex;
+}
+
+.card-header {
+    display: flex;
+}
+
+.field {
+    flex-basis: 25%;
+    flex-grow: 0;
 }
