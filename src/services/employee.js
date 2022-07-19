@@ -27,7 +27,7 @@ export const employeeApi = createApi({
         console.log(body)
         return {
           url: `employee`,
-          method: ``,
+          method: `PUT`,
           body
         }
       }
