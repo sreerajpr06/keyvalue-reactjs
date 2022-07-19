@@ -4,12 +4,13 @@ const InputField = ({
     label,
     name,
     onChange,
-    className
+    className,
+    value
 }) => {
     return (
         <div className={className}>
             <p>{label}</p>
-            <input type="text" onChange={(event) => onChange(name, event.target.value)}/>
+            <input type="text" value={value} onChange={(event) => onChange(name, event.target.value)}/>
         </div>
     )
 }

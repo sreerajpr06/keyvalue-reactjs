@@ -8,8 +8,22 @@ const Form = (props) => {
     return (
         <>
             <form action={action} id={id} className={className}>
-                {inputFields.map(element => <InputField label={element.label} name={element.name} type={element.type} className="form-element" onChange={onChange}/>)}
-                {inputSelects.map(element => <InputSelect label={element.label} name={element.name} className="form-element" options={element.options} onChange={onChange}/>)}
+                {inputFields.map(element => <InputField 
+                                                label={element.label} 
+                                                name={element.name} 
+                                                type={element.type} 
+                                                className="form-element" 
+                                                value={element.value} 
+                                                onChange={onChange}/>
+                                )}
+                {inputSelects.map(element => <InputSelect 
+                                                label={element.label} 
+                                                name={element.name} 
+                                                className="form-element" 
+                                                options={element.options} 
+                                                selected={element.selected} 
+                                                onChange={onChange}/>
+                                )}
                 {buttons.map(button => <Button label={button.label} name={button.name} handleClick={button.handleClick}/>)}
                 {/* <Button label='Create' handleClick={() => {}} className='btn1'/> */}
                 {/* <Button label='Cancel' handleClick={() => {}} className='btn2'/> */}
