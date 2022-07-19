@@ -71,17 +71,18 @@ const EmployeeList = () => {
                             ) : data ? (
                                 <> 
                                     {
-                                        employees.map(emp => {
+                                        data.data.employees.map(emp => {
+                                            console.log(emp);
                                             return (
                                                 <Card 
                                                     fields={
                                                         {
-                                                            "Employee Name": emp["Employee Name"],
-                                                            "Employee ID": emp["Employee ID"],
-                                                            "Joining Date": emp["Joining Date"],
-                                                            "Role": emp['Role'],
-                                                            "Status": emp["Status"],
-                                                            "Experience": emp["Experience"],
+                                                            "Employee Name": emp["name"],
+                                                            "Employee ID": emp["id"],
+                                                            "Joining Date": emp["joindate"],
+                                                            "Role": emp["role"],
+                                                            "Status": emp["status"],
+                                                            "Experience": emp["experience"],
                                                             "Action": "action"
                                                         }
                                                     }
