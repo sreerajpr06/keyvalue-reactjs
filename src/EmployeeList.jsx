@@ -15,24 +15,22 @@ const EmployeeList = () => {
     const { data, error, isLoading } = useGetEmployeesQuery();
     // const [employees, setEmployees] = useState([]);
     
-    const onCardClick = (empId) => {
+    const onCardClick = (empId, isEdit, isDelete) => {
         if(empId) {
             let emp = data.data.employees.find(emp => emp["id"] === empId)
             setEmpSelected(emp);
-            setPage("EmployeeDetails");
+
+            if(isEdit)
+                setPage("UpdateEmployee")
+            else if(isDelete)
+                setPage("List")
+            else
+                setPage("EmployeeDetails");
         }
     }
 
     const onCreateEmpClick = () => {
         setPage("CreateEmployee")
-    }
-
-    const onEditEmpClick = (empId) => {
-        if(empId) {
-            let emp = data.data.employees.find(emp => emp["id"] === empId)
-            setEmpSelected(emp);
-            setPage("UpdateEmployee");
-        }
     }
 
     return (
