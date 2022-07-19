@@ -6,23 +6,33 @@ import CreateEmployee from "./CreateEmployee";
 import SideNav from "./components/SideNav";
 import Divider from "./components/Divider";
 import { useGetEmployeesQuery } from './services/employee'
+import UpdateEmployee from "./UpdateEmployee";
 // import employees from "./components/EmpList";
 
 const EmployeeList = () => {
     const [page, setPage] = useState("List");
-    const [employees, setEmployees] = useState([]);
     const [ empSelected, setEmpSelected ] = useState("");
     const { data, error, isLoading } = useGetEmployeesQuery();
-
+    // const [employees, setEmployees] = useState([]);
     
     const onCardClick = (empId) => {
-        let emp = employees.find(emp => emp["Employee ID"] === empId)
-        setEmpSelected(emp);
-        setPage("EmployeeDetails");
+        if(empId) {
+            let emp = data.data.employees.find(emp => emp["id"] === empId)
+            setEmpSelected(emp);
+            setPage("EmployeeDetails");
+        }
     }
 
     const onCreateEmpClick = () => {
         setPage("CreateEmployee")
+    }
+
+    const onEditEmpClick = (empId) => {
+        if(empId) {
+            let emp = data.data.employees.find(emp => emp["id"] === empId)
+            setEmpSelected(emp);
+            setPage("UpdateEmployee");
+        }
     }
 
     return (
@@ -74,7 +84,7 @@ const EmployeeList = () => {
                                 <> 
                                     {
                                         data.data.employees.map(emp => {
-                                            console.log(emp);
+                                            {/* console.log(emp); */}
                                             return (
                                                 <Card 
                                                     fields={
@@ -105,23 +115,27 @@ const EmployeeList = () => {
                 ( 
                     (page === "EmployeeDetails") ?
                     <main>
+                        {console.log(empSelected)}
                         <EmployeeDetails 
                             details={{
-                                "Employee Name": empSelected["Employee Name"],
-                                "Employee ID": empSelected["Employee ID"],
-                                "Joining Date": empSelected["Joining Date"],
-                                "Role": empSelected["Role"],
-                                "Status": empSelected["Status"],
-                                "Experience": empSelected["Experience"],
-                                "Address": empSelected["Address"],
-                                "Employee ID Proof": empSelected["Employee ID Proof"]
+                                "Employee Name": empSelected["name"],
+                                "Employee ID": empSelected["id"],
+                                "Joining Date": empSelected["joindate"],
+                                "Role": empSelected["role"],
+                                "Status": empSelected["status"],
+                                "Experience": empSelected["experience"]
                             }}
                         />
                     </main>
+                    : 
+                    (page === "CreateEmployee") ?
+                        <>
+                            <CreateEmployee />
+                        </>
                     :
-                    <>
-                        <CreateEmployee />
-                    </>
+                        <>
+                            <UpdateEmployee emp={empSelected}/>
+                        </>
                 )
             }
         </>

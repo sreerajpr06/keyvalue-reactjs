@@ -6,18 +6,18 @@ const Card = (props) => {
     return (
         <>
             {/* {console.log(fields["Employee ID"])} */}
-            <div empid={fields["Employee ID"]} className={className} onClick={event => onClick(event.target.getAttribute("empid"))}>
+            <div empid={fields["Employee ID"]} className={className} onClick={event => onClick(event.target.attributes.empid.nodeValue)}>
                 {
                     Object.keys(fields).map((field, i) => {
                         if(field !== "Action")
                             return (
-                                <div key={i} className="field"> 
+                                <div key={i} className="field" onClick={event => onClick(event.target.parentElement.getAttribute("empid"))}> 
                                         {fields[field]}
                                 </div>
                             )
                         else if(isHeader){
                             return (
-                                <div key={i} className="field"> 
+                                <div key={i} className="field" onClick={event => onClick(event.target.parentElement.getAttribute("empid"))}> 
                                         {fields[field]}
                                 </div>
                             )
