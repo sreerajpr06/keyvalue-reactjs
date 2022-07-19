@@ -1,7 +1,10 @@
 import Button from "./components/Button";
+import Header from "./components/Header";
+import { useState } from "react";
 import InputField from "./components/InputField";
 import InputSelect from "./components/InputSelect";
 import "./styles/styles.css"
+import Form from "./components/Form";
 
 const CreateEmployee = () => {
     const onClick = () => {
@@ -36,18 +39,57 @@ const CreateEmployee = () => {
             ]
         }
     ]
+
+    const [ newEmpData, setNewEmpData ] = useState({
+        "name": "",
+        "password": "abcdefgh",
+        "role": "",
+        "departmentId": "0a2aa235-1e9e-4d28-ae66-58698beb1df4",
+        "address": {
+            "city": "kochi",
+            "state": "kerala",
+            "pin": "123456"
+        }
+    })
+
     return (
         <>
             <main>
-                <div>
-                    Create Employee
-                </div>
-                <form action="" id="create-emp" className="form-flex">
+                <Header 
+                    title="Create Employee"
+                    options={
+                        {
+                            filter: false,
+                            button: false
+                        }
+                    }
+                    className="header"
+                />
+                <Form 
+                    id="create-emp"
+                    className="form-flex"
+                    inputFields={inputFields}
+                    inputSelects={inputSelects}
+                    onChange= {()=>{}}
+                    buttons={
+                        [
+                            {
+                                label: "Create",
+                                handleClick: () => {}
+                            },
+                            {
+                                label: "Cancel",
+                                handleClick: () => {}
+                            }
+                        ]
+                    }
+                />
+                {/* <form action="" id="create-emp" className="form-flex">
                     {inputFields.map(element => <InputField label={element.label} type={element.type} className="form-element"/>)}
                     {inputSelects.map(element => <InputSelect label={element.label} name={element.name} className="form-element" options={element.options}/>)}
                     <Button label='Create' handleClick={() => {}} className='btn1'/>
                     <Button label='Cancel' handleClick={() => {}} className='btn2'/>
-                </form>
+                </form> */}
             </main>
         </>
     );
