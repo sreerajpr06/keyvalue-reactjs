@@ -3,54 +3,18 @@ import Card from "./components/Card"
 import EmployeeDetails from "./EmployeeDetails";
 import { useState } from "react";
 import CreateEmployee from "./CreateEmployee";
+import SideNav from "./components/SideNav";
+import Divider from "./components/Divider";
+import { useGetEmployeesQuery } from './services/employee'
+// import employees from "./components/EmpList";
 
 const EmployeeList = () => {
     const [page, setPage] = useState("List");
+    const [employees, setEmployees] = useState([]);
     const [ empSelected, setEmpSelected ] = useState("");
+    const { data, error, isLoading } = useGetEmployeesQuery();
 
-    const employees = [
-        {
-            "Employee Name": "Vishal M",
-            "Employee ID": "Lazada", 
-            "Joining Date": "12.04.2021",
-            "Role": "Full Stack",
-            "Status": "Probation",
-            "Experience": "5 years",
-            "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
-            "Employee ID Proof": "true"
-        },
-        {
-            "Employee Name": "Susan Kurian",
-            "Employee ID": "XYZ", 
-            "Joining Date": "12.04.2021",
-            "Role": "UI Engineer",
-            "Status": "Probation",
-            "Experience": "7 years",
-            "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
-            "Employee ID Proof": "true"
-        },
-        {
-            "Employee Name": "Yugesh",
-            "Employee ID": "XYZ1", 
-            "Joining Date": "12.04.2021",
-            "Role": "Devops",
-            "Status": "Active",
-            "Experience": "6 years",
-            "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
-            "Employee ID Proof": "true"
-        },
-        {
-            "Employee Name": "Midhun",
-            "Employee ID": "Lazada1", 
-            "Joining Date": "12.04.2021",
-            "Role": "Full Stack",
-            "Status": "Active",
-            "Experience": "5 years",
-            "Address": "No:C-9, T.V.K Industrial Estate, Kerala 600032",
-            "Employee ID Proof": "true"
-        }
-    ]
-
+    
     const onCardClick = (empId) => {
         let emp = employees.find(emp => emp["Employee ID"] === empId)
         setEmpSelected(emp);
@@ -63,6 +27,8 @@ const EmployeeList = () => {
 
     return (
         <>
+            <SideNav/>
+            {/* <Divider/> */}
             { 
                 (page === "List" )? 
                 (
@@ -72,7 +38,12 @@ const EmployeeList = () => {
                             options={
                                 {
                                     filter: true,
-                                    button: true
+                                    button: {
+                                        isValid: true,
+                                        content: "+",
+                                        description: "Create Employee",
+                                        className: "btn-create-emp"
+                                    }
                                 }
                             }
                             className="header"
@@ -93,29 +64,40 @@ const EmployeeList = () => {
                             onClick={() => {}}
                         />
                         {
-                            employees.map(emp => {
-                                return (
-                                    <Card 
-                                        fields={
-                                            {
-                                                "Employee Name": emp["Employee Name"],
-                                                "Employee ID": emp["Employee ID"],
-                                                "Joining Date": emp["Joining Date"],
-                                                "Role": emp['Role'],
-                                                "Status": emp["Status"],
-                                                "Experience": emp["Experience"],
-                                                "Action": "action"
-                                            }
-                                        }
-                                        className="card"
-                                        onClick={onCardClick}
-                                    />
-                                )
-                            })
+                            error ? (
+                                <>Oh no, there was an error</>
+                            ) : isLoading ? (
+                                <>Loading...</>
+                            ) : data ? (
+                                <> 
+                                    {
+                                        employees.map(emp => {
+                                            return (
+                                                <Card 
+                                                    fields={
+                                                        {
+                                                            "Employee Name": emp["Employee Name"],
+                                                            "Employee ID": emp["Employee ID"],
+                                                            "Joining Date": emp["Joining Date"],
+                                                            "Role": emp['Role'],
+                                                            "Status": emp["Status"],
+                                                            "Experience": emp["Experience"],
+                                                            "Action": "action"
+                                                        }
+                                                    }
+                                                    className="card"
+                                                    onClick={onCardClick}
+                                                />
+                                            )
+                                        })
+                                    }
+                                </>
+                            ) : null
                         }
                     </main>
                 )
                 :
+
                 ( 
                     (page === "EmployeeDetails") ?
                     <main>

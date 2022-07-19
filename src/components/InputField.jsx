@@ -7,7 +7,7 @@ const InputField = ({
 }) => {
     return (
         <div className={className}>
-            <div>{label}</div>
+            <p>{label}</p>
             <input type="text" onChange={(event) => onChange(event.target.value)}/>
         </div>
     )

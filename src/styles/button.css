@@ -28,3 +28,11 @@
     color: rgb(128, 125, 125);
     cursor: pointer;
 }
+
+.btn-create-emp {
+    border-radius: 50%;
+}
+
+.btn-create-emp::after {
+    content: "+";
+}

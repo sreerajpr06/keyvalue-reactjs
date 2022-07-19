@@ -6,19 +6,21 @@ const Header = (props) => {
     return (
         <>
             <div className={className}>
-                <p>{title}</p>
-                {(options.filter) ? 
-                    (
-                        <p>Filter</p>
-                    )                
-                    : 
-                    ( <></> )
-                }
-                {(options.button) ?
-                    <Button />
-                    :
-                    <></>
-                }
+                <p className="header-title">{title}</p>
+                <div className="header-options">
+                    {(options.filter) ? 
+                        (
+                            <p className="header-filter">Filter</p>
+                        )                
+                        : 
+                        ( <></> )
+                    }
+                    {(options.button) ?
+                        <Button />
+                        :
+                        <></>
+                    }
+                </div>
             </div>
         </>
     )

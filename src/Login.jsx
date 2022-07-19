@@ -25,9 +25,14 @@ const Login = () => {
     
     return(
         <>
-            <InputField label='UserName' onChange={onChangeUsername}/>
-            <InputField label='Password' onChange={onChangePassword}/>
-            <Button label='Login' handleClick={() => navigate('/create')}/>
+            <div className="flex-half">
+                <div className="flex-half-child1"></div>
+                <div className="flex-half-child2">
+                    <InputField label='UserName' onChange={onChangeUsername}/>
+                    <InputField label='Password' onChange={onChangePassword}/>
+                    <Button label='Login' handleClick={() => navigate('/create')}/>
+                </div>
+            </div>
         </>
     )
 }
