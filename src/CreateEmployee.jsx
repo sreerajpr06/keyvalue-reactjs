@@ -1,9 +1,5 @@
-import Button from "./components/Button";
 import Header from "./components/Header";
 import { useState } from "react";
-import InputField from "./components/InputField";
-import InputSelect from "./components/InputSelect";
-import "./styles/styles.css"
 import Form from "./components/Form";
 import { useAddEmployeeMutation } from "./services/employee";
 
@@ -120,12 +116,6 @@ const CreateEmployee = () => {
                         ]
                     }
                 />
-                {/* <form action="" id="create-emp" className="form-flex">
-                    {inputFields.map(element => <InputField label={element.label} type={element.type} className="form-element"/>)}
-                    {inputSelects.map(element => <InputSelect label={element.label} name={element.name} className="form-element" options={element.options}/>)}
-                    <Button label='Create' handleClick={() => {}} className='btn1'/>
-                    <Button label='Cancel' handleClick={() => {}} className='btn2'/>
-                </form> */}
             </main>
         </>
     );
