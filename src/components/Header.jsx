@@ -16,7 +16,7 @@ const Header = (props) => {
                         ( <></> )
                     }
                     {(options.button) ?
-                        <Button />
+                        <Button handleClick={options.button.onClick}/>
                         :
                         <></>
                     }

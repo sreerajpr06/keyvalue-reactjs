@@ -120,6 +120,21 @@ main {
     flex-grow: 0;
 }
 
+.icons {
+    width: 10%;
+}
+
+.delete-icon{
+    color:#FA4242;
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+.edit-icon{
+    color:#10AAC0;
+    font-size:1.2rem;
+    margin-left: 5px;
+}
+
 .emp-details {
     display: flex;
     flex-wrap: wrap;

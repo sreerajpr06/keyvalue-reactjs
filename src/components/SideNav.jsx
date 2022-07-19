@@ -14,7 +14,7 @@ function SideNav() {
 
             <ul>
                 <li>
-                    <a className="handle" href="/list">
+                    <a className="handle" href="/employees">
                         <div>
                             <img src={ListImage} alt="List Icon"/>
                         </div>

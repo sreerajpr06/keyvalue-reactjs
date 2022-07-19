@@ -1,12 +1,12 @@
 import "../styles/styles.css"
 
 const InputSelect = (props) => {
-    const { name, label, options, className } = props;
+    const { name, label, options, className, onChange } = props;
     return (
         <>
             <div className={className}>
                 <div>{label}</div>
-                <select name={name}>
+                <select name={name} onChange={event => onChange(name, event.target.value)}>
                     {options.map(option => <option value={option.key}>{option.value}</option>)}
                 </select>
             </div>

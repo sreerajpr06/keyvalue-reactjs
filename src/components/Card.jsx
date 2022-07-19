@@ -1,17 +1,35 @@
+import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
+
 const Card = (props) => {
-    const { fields, className, onClick } = props;
+    const { fields, isHeader, className, onClick } = props;
 
     return (
         <>
             {/* {console.log(fields["Employee ID"])} */}
-            <div empid={fields["Employee ID"]} className={className}>
+            <div empid={fields["Employee ID"]} className={className} onClick={event => onClick(event.target.getAttribute("empid"))}>
                 {
                     Object.keys(fields).map((field, i) => {
-                        return (
-                            <div key={i} className="field" onClick={event => onClick(event.target.parentNode.getAttribute("empid"))}>
-                                {fields[field]}
-                            </div>
-                        )
+                        if(field !== "Action")
+                            return (
+                                <div key={i} className="field"> 
+                                        {fields[field]}
+                                </div>
+                            )
+                        else if(isHeader){
+                            return (
+                                <div key={i} className="field"> 
+                                        {fields[field]}
+                                </div>
+                            )
+                        }
+                        else {
+                            return (
+                                <div key={i} className="field icons"> 
+                                    <MdOutlineDelete className="delete-icon" />
+                                    <MdOutlineEdit className="edit-icon" />
+                                </div>
+                            )
+                        }
                     })
                 }
                     {/* fields.map( field => {

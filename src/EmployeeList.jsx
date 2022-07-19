@@ -42,7 +42,8 @@ const EmployeeList = () => {
                                         isValid: true,
                                         content: "+",
                                         description: "Create Employee",
-                                        className: "btn-create-emp"
+                                        className: "btn-create-emp",
+                                        onClick: onCreateEmpClick
                                     }
                                 }
                             }
@@ -60,6 +61,7 @@ const EmployeeList = () => {
                                     "Action": "Action"
                                 }
                             }
+                            isHeader={true}
                             className="card-header"
                             onClick={() => {}}
                         />
@@ -86,6 +88,7 @@ const EmployeeList = () => {
                                                             "Action": "action"
                                                         }
                                                     }
+                                                    isHeader={false}
                                                     className="card"
                                                     onClick={onCardClick}
                                                 />
