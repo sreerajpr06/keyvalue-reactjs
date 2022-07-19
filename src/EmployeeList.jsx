@@ -5,25 +5,38 @@ import { useState } from "react";
 import CreateEmployee from "./CreateEmployee";
 import SideNav from "./components/SideNav";
 import Divider from "./components/Divider";
-import { useGetEmployeesQuery } from './services/employee'
+import { useGetEmployeesQuery, useDeleteEmployeeMutation } from './services/employee'
 import UpdateEmployee from "./UpdateEmployee";
+import { useNavigate } from "react-router-dom";
 // import employees from "./components/EmpList";
 
 const EmployeeList = () => {
     const [page, setPage] = useState("List");
     const [ empSelected, setEmpSelected ] = useState("");
     const { data, error, isLoading } = useGetEmployeesQuery();
+    const [ deleteEmployee ] = useDeleteEmployeeMutation();
+    const navigate = useNavigate();
     // const [employees, setEmployees] = useState([]);
     
-    const onCardClick = (empId, isEdit, isDelete) => {
+    const handleDeleteEmployee = async () => {
+        console.log(empSelected.id)
+        if(empSelected.id){
+            await deleteEmployee(empSelected.id)
+            navigate("/employees")
+        }
+    }
+
+    const onCardClick = async (empId, isEdit, isDelete) => {
         if(empId) {
             let emp = data.data.employees.find(emp => emp["id"] === empId)
             setEmpSelected(emp);
 
             if(isEdit)
                 setPage("UpdateEmployee")
-            else if(isDelete)
+            else if(isDelete){
+                await handleDeleteEmployee();
                 setPage("List")
+            }
             else
                 setPage("EmployeeDetails");
         }

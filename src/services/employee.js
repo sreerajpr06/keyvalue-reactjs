@@ -31,10 +31,20 @@ export const employeeApi = createApi({
           body
         }
       }
+    }),
+    deleteEmployee: builder.mutation({
+      query(id) {
+        console.log(id)
+        return {
+          url: `employee/${id}`,
+          method: `DELETE`,
+          id
+        }
+      }
     })
   }),
 })
 // console.log(employeeApi)
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetEmployeesQuery, useAddEmployeeMutation, useUpdateEmployeeMutation } = employeeApi
+export const { useGetEmployeesQuery, useAddEmployeeMutation, useUpdateEmployeeMutation, useDeleteEmployeeMutation } = employeeApi
