@@ -4,28 +4,21 @@ import ListImage from '../img/List.png'
 
 function SideNav() {
     return (
-        <aside>
-        <nav className='sidenav'>
+        <aside className='sidebar'>
             <div className="logo">
                 <a href="/">
-                    <img src={CompanyLogo} alt="Company Logo"/>
+                    <img src={CompanyLogo} alt="KeyValue Logo" className='logo'/>
                 </a>
             </div>
-
-            <ul>
-                <li>
-                    <a className="handle" href="/employees">
-                        <div>
-                            <img src={ListImage} alt="List Icon"/>
-                        </div>
-                        <h6>
-                            Employee List
-                        </h6>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+            <nav className='sidebar-list'>
+                <a href="/employees">
+                    <div className="sidebar-emp-list">
+                        <img src={ListImage} alt="List Icon" className='list-img'/>
+                        <span className='emp-list-link'>Employee List</span>
+                    </div>
+                </a>
+            </nav>
+        </aside>
     );
 }
 

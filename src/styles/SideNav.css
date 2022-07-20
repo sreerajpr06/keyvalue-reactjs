@@ -1,40 +1,44 @@
-.sidebar{
-    position:fixed;
-    height:100%;
+.sidebar {
+    position: fixed;
+    height: 100%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     width: 250px;
-    left:0;
-    top:0;
+    left: 0;
+    top: 0;
 }
-.logo{
+
+.logo {
     padding: 10px;
     margin-left: 10px;
 }
-.sidebar-emp-list{
+
+.sidebar-list {
     background-color: rgb(0, 162, 255);
     padding: 15px;
     border-top-left-radius: 90px 90px;
     border-bottom-left-radius: 90px 90px;
     margin-left: 10px;
     margin-top: 20px;
-   
 }
-.sidebar-emp-list a{
+
+.sidebar-list a {
     color: white;
     text-decoration: none;
     font-size: 0.8rem;
-    
 }
-.emp-list-link{
+
+.emp-list-link {
     padding-top: 5px;
 }
-.listImg{
+
+.list-img {
     background-color: white;
     border-radius: 50%;
     padding: 5px;
     margin-right: 10px;
-    
+
 }
-.sidebar-list{
+
+.sidebar-emp-list {
     display: flex;
 }
