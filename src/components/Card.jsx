@@ -6,18 +6,24 @@ const Card = (props) => {
 
     return (
         <>       
-            <div className={className}>
+            <div className={className} onClick={event => onClick(empId, false, false)}>
                 {
                     Object.keys(fields).map((field, i) => {
                         if(field !== "Action")
                             return (
-                                <div key={i} className="field" onClick={event => onClick(empId, false, false)}> 
+                                <div key={i} className="field" onClick={event => {
+                                    event.stopPropagation();
+                                    onClick(empId, false, false)
+                                }}> 
                                         {fields[field]}
                                 </div>
                             )
                         else if(isHeader){
                             return (
-                                <div key={i} className="field" onClick={event => onClick(empId, false, false)}> 
+                                <div key={i} className="field" onClick={event => {
+                                    event.stopPropagation();
+                                    onClick(empId, false, false)
+                                }}> 
                                         {fields[field]}
                                 </div>
                             )
@@ -25,20 +31,19 @@ const Card = (props) => {
                         else {
                             return (
                                 <div key={i} className="field icons"> 
-                                    <MdOutlineDelete className="delete-icon" onClick={event => onClick(empId, false, true)}/>
-                                    <MdOutlineEdit className="edit-icon" onClick={event => onClick(empId, true, false)}/>
+                                    <MdOutlineDelete className="delete-icon" onClick={event => {
+                                        event.stopPropagation();
+                                        onClick(empId, false, true)
+                                    }}/>
+                                    <MdOutlineEdit className="edit-icon" onClick={event => {
+                                        event.stopPropagation();
+                                        onClick(empId, true, false)
+                                    }}/>
                                 </div>
                             )
                         }
                     })
                 }
-                    {/* fields.map( field => {
-                        return (
-                            <div className="field">
-                                {field}
-                            </div>
-                        )
-                    }) */}
             </div>
         </>
     )
