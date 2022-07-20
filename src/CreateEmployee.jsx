@@ -9,19 +9,28 @@ const CreateEmployee = () => {
         "password": "",
         "role": "",
         "departmentId": "",
-        "address": {
-            "city": "",
-            "state": "",
-            "pin": ""
-        }
+        "city": "",
+        "state": "",
+        "pin": ""
     }
     const [ newEmpData, setNewEmpData ] = useState(initialValue)
 
     const [addEmployee, { isLoading, error}] = useAddEmployeeMutation();
     const handleAddEmployee = async () => {
         try {
-          await addEmployee(newEmpData).unwrap()
-          setNewEmpData(initialValue)
+            const empData = {
+                "name": newEmpData["name"],
+                "password": newEmpData["password"],
+                "departmentId": newEmpData["departmentId"],
+                "role": newEmpData["role"],
+                "address": {
+                    "city": newEmpData["city"],
+                    "state": newEmpData["state"],
+                    "pin": newEmpData["pin"]
+                }
+            }
+            await addEmployee(empData).unwrap()
+            setNewEmpData(initialValue)
         } catch {
           console.log({
             title: 'An error occurred',
