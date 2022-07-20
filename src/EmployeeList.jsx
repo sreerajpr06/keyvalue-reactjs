@@ -128,14 +128,7 @@ const EmployeeList = () => {
                     <main>
                         {console.log(empSelected)}
                         <EmployeeDetails 
-                            details={{
-                                "Employee Name": empSelected["name"],
-                                "Employee ID": empSelected["id"],
-                                "Joining Date": empSelected["joindate"],
-                                "Role": empSelected["role"],
-                                "Status": empSelected["status"],
-                                "Experience": empSelected["experience"]
-                            }}
+                            id={empSelected["id"]}
                         />
                     </main>
                     : 
