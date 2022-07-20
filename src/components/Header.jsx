@@ -1,4 +1,5 @@
 import Button from "./Button";
+import "../styles/Header.css"
 
 const Header = (props) => {
     const { title, options, className } = props;
@@ -8,15 +9,15 @@ const Header = (props) => {
             <div className={className}>
                 <p className="header-title">{title}</p>
                 <div className="header-options">
-                    {(options.filter) ? 
+                    {(options.filter) ?
                         (
                             <p className="header-filter">Filter</p>
-                        )                
-                        : 
-                        ( <></> )
+                        )
+                        :
+                        (<></>)
                     }
                     {(options.button) ?
-                        <Button handleClick={options.button.onClick}/>
+                        <Button handleClick={options.button.onClick} />
                         :
                         <></>
                     }
